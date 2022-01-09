@@ -1,0 +1,8 @@
+version: "2"
+services:
+  minecraft:
+    ports:
+      - "25565:25565"
+    build: ./container
+    volumes:
+      - ./server_data:/running
