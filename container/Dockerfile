@@ -1,10 +1,10 @@
 FROM openjdk:17-slim
 
-RUN apt update -y && apt install -y git
+RUN apt update -y && apt install -y git curl
 
-COPY ./BuildTools.jar /
+RUN curl https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar -o BuildTools.jar
 
-RUN java -jar ./BuildTools.jar -o /srv/
+RUN java -jar /BuildTools.jar -o /srv/
 
 WORKDIR /running
 
